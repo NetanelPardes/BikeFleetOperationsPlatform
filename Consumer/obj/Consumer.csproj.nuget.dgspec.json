@@ -75,6 +75,18 @@
               "target": "Package",
               "version": "[8.0.3, )"
             },
+            "Serilog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[6.1.1, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "StackExchange.Redis": {
               "target": "Package",
               "version": "[3.2.1, )"

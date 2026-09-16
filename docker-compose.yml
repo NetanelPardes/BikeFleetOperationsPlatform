@@ -63,9 +63,35 @@ services:
     restart: unless-stopped
     ports:
       - "6379:6379"
-    command: ["redis-server", "--appendonly", "yes"]
+    command:
+      - redis-server
+      - --appendonly
+      - "yes"
     volumes:
       - redis_data:/data
+
+  consumer:
+    build:
+      context: ./Consumer
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:19092
+
+      MYSQL_CONNECTION_STRING: Server=mysql;Port=3306;Database=${MYSQL_DATABASE};User ID=${MYSQL_USER};Password=${MYSQL_PASSWORD};
+
+      MONGODB_CONNECTION_STRING: mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASSWORD}@mongodb:27017/?authSource=admin
+
+      REDIS_CONNECTION_STRING: redis:6379
+    depends_on:
+      - kafka
+      - mysql
+      - mongodb
+      - redis
+    volumes:
+      - ./Consumer/Logs:/app/Logs
 
 volumes:
   mysql_data:
