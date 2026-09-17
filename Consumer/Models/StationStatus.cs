@@ -8,7 +8,7 @@ public class StationStatus
     [JsonPropertyName("station_id")]
     public string? StationId { get; set; }
 
-    [JsonPropertyName("num_bikes_available")]
+    [JsonPropertyName("num_vehicles_available")]
     public int? AvailableVehicles { get; set; }
 
     [JsonPropertyName("num_docks_available")]

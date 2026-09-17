@@ -23,10 +23,9 @@ public class KafkaConsumerService : IKafkaConsumerService
 
         string groupId =GetRequiredEnvironmentVariable("KAFKA_CONSUMER_GROUP_ID");
 
-        _stationInformationTopic =GetRequiredEnvironmentVariable("STATION_INFORMATION_TOPIC");
-        _vehicleTypesTopic =GetRequiredEnvironmentVariable("VEHICLE_TYPES_TOPIC");
-        _stationStatusTopic =GetRequiredEnvironmentVariable("STATION_STATUS_TOPIC"
-    );
+        _stationInformationTopic = GetRequiredEnvironmentVariable("STATION_INFORMATION_TOPIC");
+        _vehicleTypesTopic = GetRequiredEnvironmentVariable("VEHICLE_TYPES_TOPIC");
+        _stationStatusTopic = GetRequiredEnvironmentVariable("STATION_STATUS_TOPIC");
 
         ConsumerConfig config = new()
         {

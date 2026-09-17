@@ -31,15 +31,15 @@ public class StationStatusHandler: IStationStatusHandler
 
         if (!stationExists)
         {
-            //_logger.LogWarning("Status ignored because station {StationId} does not exist.",status.StationId);
+            _logger.LogWarning("Status ignored because station {StationId} does not exist.",status.StationId);
             return;
         }
 
         StationStatus? lastStatus =await _currentStateService.GetAsync(status.StationId);
 
-        if (lastStatus is not null &&HasSameOperationalState(lastStatus, status))
+        if (lastStatus is not null && HasSameOperationalState(lastStatus, status))
         {
-            //_logger.LogDebug("Status unchanged for station {StationId}.",status.StationId);
+            _logger.LogDebug("Status unchanged for station {StationId}.",status.StationId);
             return;
         }
 
